@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+enum CargoUsuario {
+  Chefe 
+  funcionario
+
+}
+
+enum StatusTarefa {
+  EmAndamento
+  Finalizada 
+  Pendente 
+  }
+
+model Usuario {
+  id        Int       @id @default(autoincrement())
+  nome      String
+  cargo     CargoUsuario
+  criadoEm  DateTime  @default(now())
+
+  tarefasCriadas   Tarefa[]              @relation("CriadorTarefa")
+  tarefasAtribuidas Tarefa[]             @relation("ResponsavelTarefa")
+  comentarios      Comentario[]
+  scores           Score[]
+  colaboracoes     TarefaColaborador[]
+
+  @@map("usuarios")
+}
+
+model Tarefa {
+  id          Int       @id @default(autoincrement())
+  titulo      String
+  descricao   String?
+  prazo       DateTime
+  status      StatusTarefa
+  criadoPor   Int
+  atribuidoA  Int
+  criadoEm    DateTime  @default(now())
+  concluidoEm DateTime?
+
+  criador Usuario @relation("CriadorTarefa", fields: [criadoPor], references: [id])
+  responsavel Usuario @relation("ResponsavelTarefa", fields: [atribuidoA], references: [id])
+
+  comentarios  Comentario[]
+  scores       Score[]
+  colaboradores TarefaColaborador[]
+
+  @@map("tarefas")
+}
+
+model Comentario {
+  id        Int      @id @default(autoincrement())
+  conteudo  String
+  tarefaId  Int
+  usuarioId Int
+  criadoEm  DateTime @default(now())
+
+  tarefa  Tarefa  @relation(fields: [tarefaId], references: [id])
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+
+  @@map("comentarios")
+}
+
+model Score {
+  id        Int      @id @default(autoincrement())
+  usuarioId Int
+  tarefaId  Int
+  pontos    Int
+  criadoEm  DateTime @default(now())
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+  tarefa  Tarefa  @relation(fields: [tarefaId], references: [id])
+
+  @@map("scores")
+}
+
+model TarefaColaborador {
+  id        Int @id @default(autoincrement())
+  tarefaId  Int
+  usuarioId Int
+
+  tarefa  Tarefa  @relation(fields: [tarefaId], references: [id])
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+
+  @@map("tarefa_colaboradores")
+}
