@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsEnum } from 'class-validator';
+import { IsString, IsNotEmpty, IsEnum, IsInt } from 'class-validator';
 import { CargoUsuario } from '@prisma/client';
 
 export class CreateUsuarioDto {
@@ -8,4 +8,9 @@ export class CreateUsuarioDto {
 
   @IsEnum(CargoUsuario)
   cargo!: CargoUsuario;
+}
+
+export class CreateColaboradorDto {
+  @IsInt()
+  usuarioId!: number;
 }

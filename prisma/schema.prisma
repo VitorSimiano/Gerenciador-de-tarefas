@@ -1,20 +1,22 @@
 generator client {
-  provider = "prisma-client-js"
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
 }
 
 datasource db {
   provider = "postgresql"
 }
 enum CargoUsuario {
-  Chefe 
-  funcionario
+  Chefe
+  Funcionario
 
 }
 
 enum StatusTarefa {
   EmAndamento
-  Finalizada 
-  Pendente 
+  Finalizada
+  Pendente
   }
 
 model Usuario {

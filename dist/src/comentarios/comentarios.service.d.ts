@@ -1,0 +1,49 @@
+import { CreateComentarioDto } from './dto/create-comentario.dto';
+import { UpdateComentarioDto } from './dto/update-comentario.dto';
+import { PrismaService } from '../prisma/prisma.service';
+export declare class ComentariosService {
+    private prisma;
+    constructor(prisma: PrismaService);
+    create(createComentarioDto: CreateComentarioDto): Promise<{
+        usuarioId: number;
+        criadoEm: Date;
+        id: number;
+        tarefaId: number;
+        conteudo: string;
+    }>;
+    findAll(): Promise<{
+        usuarioId: number;
+        criadoEm: Date;
+        id: number;
+        tarefaId: number;
+        conteudo: string;
+    }[]>;
+    findByTarefa(tarefaId: number): Promise<{
+        usuarioId: number;
+        criadoEm: Date;
+        id: number;
+        tarefaId: number;
+        conteudo: string;
+    }[]>;
+    findOne(id: number): Promise<{
+        usuarioId: number;
+        criadoEm: Date;
+        id: number;
+        tarefaId: number;
+        conteudo: string;
+    }>;
+    update(id: number, updateComentarioDto: UpdateComentarioDto): Promise<{
+        usuarioId: number;
+        criadoEm: Date;
+        id: number;
+        tarefaId: number;
+        conteudo: string;
+    }>;
+    remove(id: number): Promise<{
+        usuarioId: number;
+        criadoEm: Date;
+        id: number;
+        tarefaId: number;
+        conteudo: string;
+    }>;
+}
