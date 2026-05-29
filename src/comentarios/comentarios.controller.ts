@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
 import { ComentariosService } from './comentarios.service';
 import { CreateComentarioDto } from './dto/create-comentario.dto';
 import { UpdateComentarioDto } from './dto/update-comentario.dto';
@@ -17,18 +17,26 @@ export class ComentariosController {
     return this.comentariosService.findAll();
   }
 
+  @Get('tarefa/:tarefaId')
+  findByTarefa(@Param('tarefaId', ParseIntPipe) tarefaId: number) {
+    return this.comentariosService.findByTarefa(tarefaId);
+  }
+
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.comentariosService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.comentariosService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateComentarioDto: UpdateComentarioDto) {
-    return this.comentariosService.update(+id, updateComentarioDto);
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateComentarioDto: UpdateComentarioDto,
+  ) {
+    return this.comentariosService.update(id, updateComentarioDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.comentariosService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.comentariosService.remove(id);
   }
 }

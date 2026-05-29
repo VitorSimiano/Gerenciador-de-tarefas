@@ -1,34 +1,37 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe,} from '@nestjs/common';
 import { TarefasService } from './tarefas.service';
-import { CreateTarefaDto } from './dto/create-tarefa.dto';
-import { UpdateTarefaDto } from './dto/update-tarefa.dto';
+import { CreateTarefaDto } from './dto/create-tarefas.dto';
+import { UpdateTarefaDto } from './dto/update-tarefas.dto';
 
 @Controller('tarefas')
 export class TarefasController {
-  constructor(private readonly tarefasService: TarefasService) {}
+  constructor(private readonly tarefaService: TarefasService) {}
 
   @Post()
   create(@Body() createTarefaDto: CreateTarefaDto) {
-    return this.tarefasService.create(createTarefaDto);
+    return this.tarefaService.create(createTarefaDto);
   }
 
   @Get()
   findAll() {
-    return this.tarefasService.findAll();
+    return this.tarefaService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.tarefasService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.tarefaService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTarefaDto: UpdateTarefaDto) {
-    return this.tarefasService.update(+id, updateTarefaDto);
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateTarefaDto: UpdateTarefaDto,
+  ) {
+    return this.tarefaService.update(id, updateTarefaDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.tarefasService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.tarefaService.remove(id);
   }
 }

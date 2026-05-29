@@ -1,7 +1,6 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, ParseIntPipe } from '@nestjs/common';
 import { ScoreService } from './score.service';
 import { CreateScoreDto } from './dto/create-score.dto';
-import { UpdateScoreDto } from './dto/update-score.dto';
 
 @Controller('score')
 export class ScoreController {
@@ -17,18 +16,23 @@ export class ScoreController {
     return this.scoreService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.scoreService.findOne(+id);
+  @Get('ranking')
+  findRanking() {
+    return this.scoreService.findRanking();
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateScoreDto: UpdateScoreDto) {
-    return this.scoreService.update(+id, updateScoreDto);
+  @Get('usuario/:usuarioId')
+  findByUsuario(@Param('usuarioId', ParseIntPipe) usuarioId: number) {
+    return this.scoreService.findByUsuario(usuarioId);
+  }
+
+  @Get(':id')
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.scoreService.findOne(id);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.scoreService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.scoreService.remove(id);
   }
 }

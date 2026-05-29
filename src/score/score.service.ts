@@ -1,26 +1,52 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateScoreDto } from './dto/create-score.dto';
-import { UpdateScoreDto } from './dto/update-score.dto';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class ScoreService {
-  create(createScoreDto: CreateScoreDto) {
-    return 'This action adds a new score';
+  constructor(private prisma: PrismaService) {}
+
+  async create(createScoreDto: CreateScoreDto) {
+    return await this.prisma.score.create({
+      data: createScoreDto,
+    });
   }
 
-  findAll() {
-    return `This action returns all score`;
+  async findAll() {
+    return await this.prisma.score.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} score`;
+  async findRanking() {
+    return await this.prisma.score.groupBy({
+      by: ['usuarioId'],
+      _sum: { pontos: true },
+      orderBy: { _sum: { pontos: 'desc' } },
+    });
   }
 
-  update(id: number, updateScoreDto: UpdateScoreDto) {
-    return `This action updates a #${id} score`;
+  async findByUsuario(usuarioId: number) {
+    return await this.prisma.score.findMany({
+      where: { usuarioId },
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} score`;
+  async findOne(id: number) {
+    const score = await this.prisma.score.findUnique({
+      where: { id },
+    });
+
+    if (!score) {
+      throw new NotFoundException(`Score #${id} não encontrado`);
+    }
+
+    return score;
+  }
+
+  async remove(id: number) {
+    await this.findOne(id);
+
+    return await this.prisma.score.delete({
+      where: { id },
+    });
   }
 }
