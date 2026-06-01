@@ -19,7 +19,10 @@ let UsuarioService = class UsuarioService {
     }
     async create(createUsuarioDto) {
         return await this.prisma.usuario.create({
-            data: createUsuarioDto,
+            data: {
+                nome: createUsuarioDto.nome,
+                cargo: createUsuarioDto.cargo,
+            },
         });
     }
     async findAll() {

@@ -1,5 +1,5 @@
 import { IsString, IsNotEmpty, IsEnum, IsInt } from 'class-validator';
-import { CargoUsuario } from '@prisma/client';
+import { CargoUsuario } from '../../generated/prisma/enums';
 
 export class CreateUsuarioDto {
   @IsString()

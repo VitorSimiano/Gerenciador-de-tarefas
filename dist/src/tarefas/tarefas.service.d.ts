@@ -1,6 +1,7 @@
 import { CreateTarefaDto } from './dto/create-tarefas.dto';
 import { UpdateTarefaDto } from './dto/update-tarefas.dto';
 import { PrismaService } from '../prisma/prisma.service';
+import { StatusTarefa } from '../generated/prisma/enums';
 export declare class TarefasService {
     private prisma;
     constructor(prisma: PrismaService);
@@ -10,7 +11,7 @@ export declare class TarefasService {
         titulo: string;
         prazo: Date;
         descricao: string | null;
-        status: import("../generated/prisma/enums").StatusTarefa;
+        status: StatusTarefa;
         atribuidoA: number;
         criadoPor: number;
         concluidoEm: Date | null;
@@ -21,7 +22,7 @@ export declare class TarefasService {
         titulo: string;
         prazo: Date;
         descricao: string | null;
-        status: import("../generated/prisma/enums").StatusTarefa;
+        status: StatusTarefa;
         atribuidoA: number;
         criadoPor: number;
         concluidoEm: Date | null;
@@ -32,7 +33,7 @@ export declare class TarefasService {
         titulo: string;
         prazo: Date;
         descricao: string | null;
-        status: import("../generated/prisma/enums").StatusTarefa;
+        status: StatusTarefa;
         atribuidoA: number;
         criadoPor: number;
         concluidoEm: Date | null;
@@ -43,7 +44,7 @@ export declare class TarefasService {
         titulo: string;
         prazo: Date;
         descricao: string | null;
-        status: import("../generated/prisma/enums").StatusTarefa;
+        status: StatusTarefa;
         atribuidoA: number;
         criadoPor: number;
         concluidoEm: Date | null;
@@ -54,7 +55,7 @@ export declare class TarefasService {
         titulo: string;
         prazo: Date;
         descricao: string | null;
-        status: import("../generated/prisma/enums").StatusTarefa;
+        status: StatusTarefa;
         atribuidoA: number;
         criadoPor: number;
         concluidoEm: Date | null;
@@ -66,7 +67,7 @@ export declare class TarefasService {
             titulo: string;
             prazo: Date;
             descricao: string | null;
-            status: import("../generated/prisma/enums").StatusTarefa;
+            status: StatusTarefa;
             atribuidoA: number;
             criadoPor: number;
             concluidoEm: Date | null;
@@ -79,7 +80,7 @@ export declare class TarefasService {
         titulo: string;
         prazo: Date;
         descricao: string | null;
-        status: import("../generated/prisma/enums").StatusTarefa;
+        status: StatusTarefa;
         atribuidoA: number;
         criadoPor: number;
         concluidoEm: Date | null;

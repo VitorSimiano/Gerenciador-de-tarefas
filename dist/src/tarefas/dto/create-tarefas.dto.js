@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateTarefaDto = void 0;
 const class_validator_1 = require("class-validator");
-const client_1 = require("../../generated/prisma/client");
+const enums_1 = require("../../generated/prisma/enums");
 class CreateTarefaDto {
     titulo;
     prazo;
@@ -37,7 +37,7 @@ __decorate([
     __metadata("design:type", String)
 ], CreateTarefaDto.prototype, "descricao", void 0);
 __decorate([
-    (0, class_validator_1.IsEnum)(client_1.StatusTarefa),
+    (0, class_validator_1.IsEnum)(enums_1.StatusTarefa),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateTarefaDto.prototype, "status", void 0);

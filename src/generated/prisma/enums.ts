@@ -10,17 +10,17 @@
 */
 
 export const CargoUsuario = {
-  Chefe: 'Chefe',
-  funcionario: 'funcionario'
+  CHEFE: 'CHEFE',
+  FUNCIONARIO: 'FUNCIONARIO'
 } as const
 
 export type CargoUsuario = (typeof CargoUsuario)[keyof typeof CargoUsuario]
 
 
 export const StatusTarefa = {
-  EmAndamento: 'EmAndamento',
-  Finalizada: 'Finalizada',
-  Pendente: 'Pendente'
+  PENDENTE: 'PENDENTE',
+  EM_ANDAMENTO: 'EM_ANDAMENTO',
+  FINALIZADA: 'FINALIZADA'
 } as const
 
 export type StatusTarefa = (typeof StatusTarefa)[keyof typeof StatusTarefa]

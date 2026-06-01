@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StatusTarefa = exports.CargoUsuario = void 0;
 exports.CargoUsuario = {
-    Chefe: 'Chefe',
-    funcionario: 'funcionario'
+    CHEFE: 'CHEFE',
+    FUNCIONARIO: 'FUNCIONARIO'
 };
 exports.StatusTarefa = {
-    EmAndamento: 'EmAndamento',
-    Finalizada: 'Finalizada',
-    Pendente: 'Pendente'
+    PENDENTE: 'PENDENTE',
+    EM_ANDAMENTO: 'EM_ANDAMENTO',
+    FINALIZADA: 'FINALIZADA'
 };
 //# sourceMappingURL=enums.js.map

@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateColaboradorDto = exports.CreateUsuarioDto = void 0;
 const class_validator_1 = require("class-validator");
-const client_1 = require("@prisma/client");
+const enums_1 = require("../../generated/prisma/enums");
 class CreateUsuarioDto {
     nome;
     cargo;
@@ -23,7 +23,7 @@ __decorate([
     __metadata("design:type", String)
 ], CreateUsuarioDto.prototype, "nome", void 0);
 __decorate([
-    (0, class_validator_1.IsEnum)(client_1.CargoUsuario),
+    (0, class_validator_1.IsEnum)(enums_1.CargoUsuario),
     __metadata("design:type", String)
 ], CreateUsuarioDto.prototype, "cargo", void 0);
 class CreateColaboradorDto {

@@ -18,6 +18,8 @@ const tarefas_service_1 = require("./tarefas.service");
 const create_tarefas_dto_1 = require("./dto/create-tarefas.dto");
 const update_tarefas_dto_1 = require("./dto/update-tarefas.dto");
 const create_usuario_dto_1 = require("../usuario/dto/create-usuario.dto");
+const cargo_guard_1 = require("../usuario/cargo.guard");
+const cargos_decorator_1 = require("../usuario/cargos.decorator");
 let TarefasController = class TarefasController {
     tarefaService;
     constructor(tarefaService) {
@@ -57,6 +59,8 @@ let TarefasController = class TarefasController {
 exports.TarefasController = TarefasController;
 __decorate([
     (0, common_1.Post)(),
+    (0, cargos_decorator_1.Cargos)('CHEFE'),
+    (0, common_1.UseGuards)(cargo_guard_1.CargoGuard),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_tarefas_dto_1.CreateTarefaDto]),
@@ -64,6 +68,8 @@ __decorate([
 ], TarefasController.prototype, "create", null);
 __decorate([
     (0, common_1.Post)(':id/colaboradores'),
+    (0, cargos_decorator_1.Cargos)('CHEFE'),
+    (0, common_1.UseGuards)(cargo_guard_1.CargoGuard),
     __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -105,6 +111,8 @@ __decorate([
 ], TarefasController.prototype, "concluirTarefa", null);
 __decorate([
     (0, common_1.Patch)(':id'),
+    (0, cargos_decorator_1.Cargos)('CHEFE'),
+    (0, common_1.UseGuards)(cargo_guard_1.CargoGuard),
     __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -113,6 +121,8 @@ __decorate([
 ], TarefasController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
+    (0, cargos_decorator_1.Cargos)('CHEFE'),
+    (0, common_1.UseGuards)(cargo_guard_1.CargoGuard),
     __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
@@ -120,6 +130,8 @@ __decorate([
 ], TarefasController.prototype, "remove", null);
 __decorate([
     (0, common_1.Delete)(':id/colaboradores/:usuarioId'),
+    (0, cargos_decorator_1.Cargos)('CHEFE'),
+    (0, common_1.UseGuards)(cargo_guard_1.CargoGuard),
     __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __param(1, (0, common_1.Param)('usuarioId', common_1.ParseIntPipe)),
     __metadata("design:type", Function),

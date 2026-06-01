@@ -8,15 +8,14 @@ datasource db {
   provider = "postgresql"
 }
 enum CargoUsuario {
-  Chefe
-  Funcionario
-
+  CHEFE
+  FUNCIONARIO
 }
 
 enum StatusTarefa {
-  EmAndamento
-  Finalizada
-  Pendente
+  PENDENTE
+  EM_ANDAMENTO
+  FINALIZADA
   }
 
 model Usuario {

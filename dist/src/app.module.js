@@ -16,7 +16,6 @@ const usuario_module_1 = require("./usuario/usuario.module");
 const tarefas_module_1 = require("./tarefas/tarefas.module");
 const comentarios_module_1 = require("./comentarios/comentarios.module");
 const score_module_1 = require("./score/score.module");
-const common_2 = require("@nestjs/common");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -24,7 +23,7 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [prisma_module_1.PrismaModule, usuario_module_1.UsuarioModule, tarefas_module_1.TarefasModule, comentarios_module_1.ComentariosModule, score_module_1.ScoreModule],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService, common_2.ValidationPipe],
+        providers: [app_service_1.AppService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TarefasService = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../prisma/prisma.service");
-const client_1 = require("@prisma/client");
+const enums_1 = require("../generated/prisma/enums");
 let TarefasService = class TarefasService {
     prisma;
     constructor(prisma) {
@@ -50,7 +50,7 @@ let TarefasService = class TarefasService {
     }
     async concluirTarefa(id) {
         const tarefa = await this.findOne(id);
-        if (tarefa.status === client_1.StatusTarefa.Finalizada) {
+        if (tarefa.status === enums_1.StatusTarefa.FINALIZADA) {
             throw new common_1.BadRequestException('Essa tarefa já foi concluída.');
         }
         const agora = new Date();
@@ -60,7 +60,7 @@ let TarefasService = class TarefasService {
         const tarefaConcluida = await this.prisma.tarefa.update({
             where: { id },
             data: {
-                status: client_1.StatusTarefa.Finalizada,
+                status: enums_1.StatusTarefa.FINALIZADA,
                 concluidoEm: agora,
             },
         });
@@ -77,7 +77,7 @@ let TarefasService = class TarefasService {
         return await this.prisma.tarefa.findMany({
             where: {
                 prazo: { lt: new Date() },
-                status: { not: client_1.StatusTarefa.Finalizada },
+                status: { not: enums_1.StatusTarefa.FINALIZADA },
             },
         });
     }

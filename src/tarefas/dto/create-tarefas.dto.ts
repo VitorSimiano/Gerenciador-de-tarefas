@@ -1,5 +1,5 @@
 import { IsString, IsDateString, IsNotEmpty, IsOptional , IsInt, IsEnum, IsDate } from 'class-validator';
-import { StatusTarefa } from '../../generated/prisma/client';
+import { StatusTarefa } from '../../generated/prisma/enums';
 
 export class CreateTarefaDto {
 @IsString()

@@ -1,4 +1,4 @@
-import { CargoUsuario } from '@prisma/client';
+import { CargoUsuario } from '../../generated/prisma/enums';
 export declare class CreateUsuarioDto {
     nome: string;
     cargo: CargoUsuario;

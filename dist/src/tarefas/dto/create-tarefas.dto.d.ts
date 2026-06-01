@@ -1,4 +1,4 @@
-import { StatusTarefa } from '../../generated/prisma/client';
+import { StatusTarefa } from '../../generated/prisma/enums';
 export declare class CreateTarefaDto {
     titulo: string;
     prazo: Date;

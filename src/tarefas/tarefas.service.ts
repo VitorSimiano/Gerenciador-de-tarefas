@@ -2,7 +2,7 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { CreateTarefaDto } from './dto/create-tarefas.dto';
 import { UpdateTarefaDto } from './dto/update-tarefas.dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { StatusTarefa } from '@prisma/client';
+import { StatusTarefa } from '../generated/prisma/enums';
 
 @Injectable()
 export class TarefasService {
@@ -50,7 +50,7 @@ export class TarefasService {
 async concluirTarefa(id: number) {
   const tarefa = await this.findOne(id);
 
-  if (tarefa.status === StatusTarefa.Finalizada) {
+  if (tarefa.status === StatusTarefa.FINALIZADA) {
     throw new BadRequestException('Essa tarefa já foi concluída.');
   }
 
@@ -62,7 +62,7 @@ async concluirTarefa(id: number) {
   const tarefaConcluida = await this.prisma.tarefa.update({
     where: { id },
     data: {
-      status: StatusTarefa.Finalizada,
+      status: StatusTarefa.FINALIZADA,
       concluidoEm: agora,
     },
   });
@@ -81,7 +81,7 @@ async findAtrasadas() {
   return await this.prisma.tarefa.findMany({
     where: {
       prazo: { lt: new Date() },
-      status: { not: StatusTarefa.Finalizada },
+      status: { not: StatusTarefa.FINALIZADA },
     },
   });
 }
