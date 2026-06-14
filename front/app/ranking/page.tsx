@@ -43,7 +43,7 @@ export default function RankingPage() {
   }, []);
 
   return (
-    <div className="flex h-screen bg-slate-100">
+    <div className="flex h-screen bg-slate-100 text-black">
       <Sidebar />
 
       <div className="flex flex-1 flex-col overflow-hidden">
