@@ -60,6 +60,7 @@ exports.TransactionIsolationLevel = runtime.makeStrictEnum({
 exports.UsuarioScalarFieldEnum = {
     id: 'id',
     nome: 'nome',
+    senha: 'senha',
     cargo: 'cargo',
     criadoEm: 'criadoEm'
 };

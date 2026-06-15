@@ -6,6 +6,7 @@ export declare class UsuarioController {
     constructor(usuarioService: UsuarioService);
     create(createUsuarioDto: CreateUsuarioDto): Promise<{
         nome: string;
+        senha: string;
         cargo: import("../generated/prisma/enums").CargoUsuario;
         criadoEm: Date;
         id: number;
@@ -24,12 +25,14 @@ export declare class UsuarioController {
     }>;
     update(id: number, updateUsuarioDto: UpdateUsuarioDto): Promise<{
         nome: string;
+        senha: string;
         cargo: import("../generated/prisma/enums").CargoUsuario;
         criadoEm: Date;
         id: number;
     }>;
     remove(id: number): Promise<{
         nome: string;
+        senha: string;
         cargo: import("../generated/prisma/enums").CargoUsuario;
         criadoEm: Date;
         id: number;

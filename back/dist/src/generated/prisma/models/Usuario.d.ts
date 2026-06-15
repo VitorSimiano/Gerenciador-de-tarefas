@@ -18,18 +18,21 @@ export type UsuarioSumAggregateOutputType = {
 export type UsuarioMinAggregateOutputType = {
     id: number | null;
     nome: string | null;
+    senha: string | null;
     cargo: $Enums.CargoUsuario | null;
     criadoEm: Date | null;
 };
 export type UsuarioMaxAggregateOutputType = {
     id: number | null;
     nome: string | null;
+    senha: string | null;
     cargo: $Enums.CargoUsuario | null;
     criadoEm: Date | null;
 };
 export type UsuarioCountAggregateOutputType = {
     id: number;
     nome: number;
+    senha: number;
     cargo: number;
     criadoEm: number;
     _all: number;
@@ -43,18 +46,21 @@ export type UsuarioSumAggregateInputType = {
 export type UsuarioMinAggregateInputType = {
     id?: true;
     nome?: true;
+    senha?: true;
     cargo?: true;
     criadoEm?: true;
 };
 export type UsuarioMaxAggregateInputType = {
     id?: true;
     nome?: true;
+    senha?: true;
     cargo?: true;
     criadoEm?: true;
 };
 export type UsuarioCountAggregateInputType = {
     id?: true;
     nome?: true;
+    senha?: true;
     cargo?: true;
     criadoEm?: true;
     _all?: true;
@@ -90,6 +96,7 @@ export type UsuarioGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type UsuarioGroupByOutputType = {
     id: number;
     nome: string;
+    senha: string;
     cargo: $Enums.CargoUsuario;
     criadoEm: Date;
     _count: UsuarioCountAggregateOutputType | null;
@@ -107,6 +114,7 @@ export type UsuarioWhereInput = {
     NOT?: Prisma.UsuarioWhereInput | Prisma.UsuarioWhereInput[];
     id?: Prisma.IntFilter<"Usuario"> | number;
     nome?: Prisma.StringFilter<"Usuario"> | string;
+    senha?: Prisma.StringFilter<"Usuario"> | string;
     cargo?: Prisma.EnumCargoUsuarioFilter<"Usuario"> | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFilter<"Usuario"> | Date | string;
     tarefasCriadas?: Prisma.TarefaListRelationFilter;
@@ -118,6 +126,7 @@ export type UsuarioWhereInput = {
 export type UsuarioOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
     nome?: Prisma.SortOrder;
+    senha?: Prisma.SortOrder;
     cargo?: Prisma.SortOrder;
     criadoEm?: Prisma.SortOrder;
     tarefasCriadas?: Prisma.TarefaOrderByRelationAggregateInput;
@@ -132,6 +141,7 @@ export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
     OR?: Prisma.UsuarioWhereInput[];
     NOT?: Prisma.UsuarioWhereInput | Prisma.UsuarioWhereInput[];
     nome?: Prisma.StringFilter<"Usuario"> | string;
+    senha?: Prisma.StringFilter<"Usuario"> | string;
     cargo?: Prisma.EnumCargoUsuarioFilter<"Usuario"> | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFilter<"Usuario"> | Date | string;
     tarefasCriadas?: Prisma.TarefaListRelationFilter;
@@ -143,6 +153,7 @@ export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
 export type UsuarioOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
     nome?: Prisma.SortOrder;
+    senha?: Prisma.SortOrder;
     cargo?: Prisma.SortOrder;
     criadoEm?: Prisma.SortOrder;
     _count?: Prisma.UsuarioCountOrderByAggregateInput;
@@ -157,11 +168,13 @@ export type UsuarioScalarWhereWithAggregatesInput = {
     NOT?: Prisma.UsuarioScalarWhereWithAggregatesInput | Prisma.UsuarioScalarWhereWithAggregatesInput[];
     id?: Prisma.IntWithAggregatesFilter<"Usuario"> | number;
     nome?: Prisma.StringWithAggregatesFilter<"Usuario"> | string;
+    senha?: Prisma.StringWithAggregatesFilter<"Usuario"> | string;
     cargo?: Prisma.EnumCargoUsuarioWithAggregatesFilter<"Usuario"> | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeWithAggregatesFilter<"Usuario"> | Date | string;
 };
 export type UsuarioCreateInput = {
     nome: string;
+    senha: string;
     cargo: $Enums.CargoUsuario;
     criadoEm?: Date | string;
     tarefasCriadas?: Prisma.TarefaCreateNestedManyWithoutCriadorInput;
@@ -173,6 +186,7 @@ export type UsuarioCreateInput = {
 export type UsuarioUncheckedCreateInput = {
     id?: number;
     nome: string;
+    senha: string;
     cargo: $Enums.CargoUsuario;
     criadoEm?: Date | string;
     tarefasCriadas?: Prisma.TarefaUncheckedCreateNestedManyWithoutCriadorInput;
@@ -183,6 +197,7 @@ export type UsuarioUncheckedCreateInput = {
 };
 export type UsuarioUpdateInput = {
     nome?: Prisma.StringFieldUpdateOperationsInput | string;
+    senha?: Prisma.StringFieldUpdateOperationsInput | string;
     cargo?: Prisma.EnumCargoUsuarioFieldUpdateOperationsInput | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     tarefasCriadas?: Prisma.TarefaUpdateManyWithoutCriadorNestedInput;
@@ -194,6 +209,7 @@ export type UsuarioUpdateInput = {
 export type UsuarioUncheckedUpdateInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     nome?: Prisma.StringFieldUpdateOperationsInput | string;
+    senha?: Prisma.StringFieldUpdateOperationsInput | string;
     cargo?: Prisma.EnumCargoUsuarioFieldUpdateOperationsInput | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     tarefasCriadas?: Prisma.TarefaUncheckedUpdateManyWithoutCriadorNestedInput;
@@ -205,23 +221,27 @@ export type UsuarioUncheckedUpdateInput = {
 export type UsuarioCreateManyInput = {
     id?: number;
     nome: string;
+    senha: string;
     cargo: $Enums.CargoUsuario;
     criadoEm?: Date | string;
 };
 export type UsuarioUpdateManyMutationInput = {
     nome?: Prisma.StringFieldUpdateOperationsInput | string;
+    senha?: Prisma.StringFieldUpdateOperationsInput | string;
     cargo?: Prisma.EnumCargoUsuarioFieldUpdateOperationsInput | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type UsuarioUncheckedUpdateManyInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     nome?: Prisma.StringFieldUpdateOperationsInput | string;
+    senha?: Prisma.StringFieldUpdateOperationsInput | string;
     cargo?: Prisma.EnumCargoUsuarioFieldUpdateOperationsInput | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type UsuarioCountOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     nome?: Prisma.SortOrder;
+    senha?: Prisma.SortOrder;
     cargo?: Prisma.SortOrder;
     criadoEm?: Prisma.SortOrder;
 };
@@ -231,12 +251,14 @@ export type UsuarioAvgOrderByAggregateInput = {
 export type UsuarioMaxOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     nome?: Prisma.SortOrder;
+    senha?: Prisma.SortOrder;
     cargo?: Prisma.SortOrder;
     criadoEm?: Prisma.SortOrder;
 };
 export type UsuarioMinOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     nome?: Prisma.SortOrder;
+    senha?: Prisma.SortOrder;
     cargo?: Prisma.SortOrder;
     criadoEm?: Prisma.SortOrder;
 };
@@ -325,6 +347,7 @@ export type UsuarioUpdateOneRequiredWithoutColaboracoesNestedInput = {
 };
 export type UsuarioCreateWithoutTarefasCriadasInput = {
     nome: string;
+    senha: string;
     cargo: $Enums.CargoUsuario;
     criadoEm?: Date | string;
     tarefasAtribuidas?: Prisma.TarefaCreateNestedManyWithoutResponsavelInput;
@@ -335,6 +358,7 @@ export type UsuarioCreateWithoutTarefasCriadasInput = {
 export type UsuarioUncheckedCreateWithoutTarefasCriadasInput = {
     id?: number;
     nome: string;
+    senha: string;
     cargo: $Enums.CargoUsuario;
     criadoEm?: Date | string;
     tarefasAtribuidas?: Prisma.TarefaUncheckedCreateNestedManyWithoutResponsavelInput;
@@ -348,6 +372,7 @@ export type UsuarioCreateOrConnectWithoutTarefasCriadasInput = {
 };
 export type UsuarioCreateWithoutTarefasAtribuidasInput = {
     nome: string;
+    senha: string;
     cargo: $Enums.CargoUsuario;
     criadoEm?: Date | string;
     tarefasCriadas?: Prisma.TarefaCreateNestedManyWithoutCriadorInput;
@@ -358,6 +383,7 @@ export type UsuarioCreateWithoutTarefasAtribuidasInput = {
 export type UsuarioUncheckedCreateWithoutTarefasAtribuidasInput = {
     id?: number;
     nome: string;
+    senha: string;
     cargo: $Enums.CargoUsuario;
     criadoEm?: Date | string;
     tarefasCriadas?: Prisma.TarefaUncheckedCreateNestedManyWithoutCriadorInput;
@@ -380,6 +406,7 @@ export type UsuarioUpdateToOneWithWhereWithoutTarefasCriadasInput = {
 };
 export type UsuarioUpdateWithoutTarefasCriadasInput = {
     nome?: Prisma.StringFieldUpdateOperationsInput | string;
+    senha?: Prisma.StringFieldUpdateOperationsInput | string;
     cargo?: Prisma.EnumCargoUsuarioFieldUpdateOperationsInput | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     tarefasAtribuidas?: Prisma.TarefaUpdateManyWithoutResponsavelNestedInput;
@@ -390,6 +417,7 @@ export type UsuarioUpdateWithoutTarefasCriadasInput = {
 export type UsuarioUncheckedUpdateWithoutTarefasCriadasInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     nome?: Prisma.StringFieldUpdateOperationsInput | string;
+    senha?: Prisma.StringFieldUpdateOperationsInput | string;
     cargo?: Prisma.EnumCargoUsuarioFieldUpdateOperationsInput | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     tarefasAtribuidas?: Prisma.TarefaUncheckedUpdateManyWithoutResponsavelNestedInput;
@@ -408,6 +436,7 @@ export type UsuarioUpdateToOneWithWhereWithoutTarefasAtribuidasInput = {
 };
 export type UsuarioUpdateWithoutTarefasAtribuidasInput = {
     nome?: Prisma.StringFieldUpdateOperationsInput | string;
+    senha?: Prisma.StringFieldUpdateOperationsInput | string;
     cargo?: Prisma.EnumCargoUsuarioFieldUpdateOperationsInput | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     tarefasCriadas?: Prisma.TarefaUpdateManyWithoutCriadorNestedInput;
@@ -418,6 +447,7 @@ export type UsuarioUpdateWithoutTarefasAtribuidasInput = {
 export type UsuarioUncheckedUpdateWithoutTarefasAtribuidasInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     nome?: Prisma.StringFieldUpdateOperationsInput | string;
+    senha?: Prisma.StringFieldUpdateOperationsInput | string;
     cargo?: Prisma.EnumCargoUsuarioFieldUpdateOperationsInput | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     tarefasCriadas?: Prisma.TarefaUncheckedUpdateManyWithoutCriadorNestedInput;
@@ -427,6 +457,7 @@ export type UsuarioUncheckedUpdateWithoutTarefasAtribuidasInput = {
 };
 export type UsuarioCreateWithoutComentariosInput = {
     nome: string;
+    senha: string;
     cargo: $Enums.CargoUsuario;
     criadoEm?: Date | string;
     tarefasCriadas?: Prisma.TarefaCreateNestedManyWithoutCriadorInput;
@@ -437,6 +468,7 @@ export type UsuarioCreateWithoutComentariosInput = {
 export type UsuarioUncheckedCreateWithoutComentariosInput = {
     id?: number;
     nome: string;
+    senha: string;
     cargo: $Enums.CargoUsuario;
     criadoEm?: Date | string;
     tarefasCriadas?: Prisma.TarefaUncheckedCreateNestedManyWithoutCriadorInput;
@@ -459,6 +491,7 @@ export type UsuarioUpdateToOneWithWhereWithoutComentariosInput = {
 };
 export type UsuarioUpdateWithoutComentariosInput = {
     nome?: Prisma.StringFieldUpdateOperationsInput | string;
+    senha?: Prisma.StringFieldUpdateOperationsInput | string;
     cargo?: Prisma.EnumCargoUsuarioFieldUpdateOperationsInput | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     tarefasCriadas?: Prisma.TarefaUpdateManyWithoutCriadorNestedInput;
@@ -469,6 +502,7 @@ export type UsuarioUpdateWithoutComentariosInput = {
 export type UsuarioUncheckedUpdateWithoutComentariosInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     nome?: Prisma.StringFieldUpdateOperationsInput | string;
+    senha?: Prisma.StringFieldUpdateOperationsInput | string;
     cargo?: Prisma.EnumCargoUsuarioFieldUpdateOperationsInput | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     tarefasCriadas?: Prisma.TarefaUncheckedUpdateManyWithoutCriadorNestedInput;
@@ -478,6 +512,7 @@ export type UsuarioUncheckedUpdateWithoutComentariosInput = {
 };
 export type UsuarioCreateWithoutScoresInput = {
     nome: string;
+    senha: string;
     cargo: $Enums.CargoUsuario;
     criadoEm?: Date | string;
     tarefasCriadas?: Prisma.TarefaCreateNestedManyWithoutCriadorInput;
@@ -488,6 +523,7 @@ export type UsuarioCreateWithoutScoresInput = {
 export type UsuarioUncheckedCreateWithoutScoresInput = {
     id?: number;
     nome: string;
+    senha: string;
     cargo: $Enums.CargoUsuario;
     criadoEm?: Date | string;
     tarefasCriadas?: Prisma.TarefaUncheckedCreateNestedManyWithoutCriadorInput;
@@ -510,6 +546,7 @@ export type UsuarioUpdateToOneWithWhereWithoutScoresInput = {
 };
 export type UsuarioUpdateWithoutScoresInput = {
     nome?: Prisma.StringFieldUpdateOperationsInput | string;
+    senha?: Prisma.StringFieldUpdateOperationsInput | string;
     cargo?: Prisma.EnumCargoUsuarioFieldUpdateOperationsInput | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     tarefasCriadas?: Prisma.TarefaUpdateManyWithoutCriadorNestedInput;
@@ -520,6 +557,7 @@ export type UsuarioUpdateWithoutScoresInput = {
 export type UsuarioUncheckedUpdateWithoutScoresInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     nome?: Prisma.StringFieldUpdateOperationsInput | string;
+    senha?: Prisma.StringFieldUpdateOperationsInput | string;
     cargo?: Prisma.EnumCargoUsuarioFieldUpdateOperationsInput | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     tarefasCriadas?: Prisma.TarefaUncheckedUpdateManyWithoutCriadorNestedInput;
@@ -529,6 +567,7 @@ export type UsuarioUncheckedUpdateWithoutScoresInput = {
 };
 export type UsuarioCreateWithoutColaboracoesInput = {
     nome: string;
+    senha: string;
     cargo: $Enums.CargoUsuario;
     criadoEm?: Date | string;
     tarefasCriadas?: Prisma.TarefaCreateNestedManyWithoutCriadorInput;
@@ -539,6 +578,7 @@ export type UsuarioCreateWithoutColaboracoesInput = {
 export type UsuarioUncheckedCreateWithoutColaboracoesInput = {
     id?: number;
     nome: string;
+    senha: string;
     cargo: $Enums.CargoUsuario;
     criadoEm?: Date | string;
     tarefasCriadas?: Prisma.TarefaUncheckedCreateNestedManyWithoutCriadorInput;
@@ -561,6 +601,7 @@ export type UsuarioUpdateToOneWithWhereWithoutColaboracoesInput = {
 };
 export type UsuarioUpdateWithoutColaboracoesInput = {
     nome?: Prisma.StringFieldUpdateOperationsInput | string;
+    senha?: Prisma.StringFieldUpdateOperationsInput | string;
     cargo?: Prisma.EnumCargoUsuarioFieldUpdateOperationsInput | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     tarefasCriadas?: Prisma.TarefaUpdateManyWithoutCriadorNestedInput;
@@ -571,6 +612,7 @@ export type UsuarioUpdateWithoutColaboracoesInput = {
 export type UsuarioUncheckedUpdateWithoutColaboracoesInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     nome?: Prisma.StringFieldUpdateOperationsInput | string;
+    senha?: Prisma.StringFieldUpdateOperationsInput | string;
     cargo?: Prisma.EnumCargoUsuarioFieldUpdateOperationsInput | $Enums.CargoUsuario;
     criadoEm?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     tarefasCriadas?: Prisma.TarefaUncheckedUpdateManyWithoutCriadorNestedInput;
@@ -613,6 +655,7 @@ export type UsuarioCountOutputTypeCountColaboracoesArgs<ExtArgs extends runtime.
 export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     nome?: boolean;
+    senha?: boolean;
     cargo?: boolean;
     criadoEm?: boolean;
     tarefasCriadas?: boolean | Prisma.Usuario$tarefasCriadasArgs<ExtArgs>;
@@ -625,22 +668,25 @@ export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type UsuarioSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     nome?: boolean;
+    senha?: boolean;
     cargo?: boolean;
     criadoEm?: boolean;
 }, ExtArgs["result"]["usuario"]>;
 export type UsuarioSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     nome?: boolean;
+    senha?: boolean;
     cargo?: boolean;
     criadoEm?: boolean;
 }, ExtArgs["result"]["usuario"]>;
 export type UsuarioSelectScalar = {
     id?: boolean;
     nome?: boolean;
+    senha?: boolean;
     cargo?: boolean;
     criadoEm?: boolean;
 };
-export type UsuarioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "cargo" | "criadoEm", ExtArgs["result"]["usuario"]>;
+export type UsuarioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "senha" | "cargo" | "criadoEm", ExtArgs["result"]["usuario"]>;
 export type UsuarioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     tarefasCriadas?: boolean | Prisma.Usuario$tarefasCriadasArgs<ExtArgs>;
     tarefasAtribuidas?: boolean | Prisma.Usuario$tarefasAtribuidasArgs<ExtArgs>;
@@ -663,6 +709,7 @@ export type $UsuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: number;
         nome: string;
+        senha: string;
         cargo: $Enums.CargoUsuario;
         criadoEm: Date;
     }, ExtArgs["result"]["usuario"]>;
@@ -729,6 +776,7 @@ export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends runtime.
 export interface UsuarioFieldRefs {
     readonly id: Prisma.FieldRef<"Usuario", 'Int'>;
     readonly nome: Prisma.FieldRef<"Usuario", 'String'>;
+    readonly senha: Prisma.FieldRef<"Usuario", 'String'>;
     readonly cargo: Prisma.FieldRef<"Usuario", 'CargoUsuario'>;
     readonly criadoEm: Prisma.FieldRef<"Usuario", 'DateTime'>;
 }

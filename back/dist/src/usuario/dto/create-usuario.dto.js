@@ -14,6 +14,7 @@ const class_validator_1 = require("class-validator");
 const enums_1 = require("../../generated/prisma/enums");
 class CreateUsuarioDto {
     nome;
+    senha;
     cargo;
 }
 exports.CreateUsuarioDto = CreateUsuarioDto;
@@ -22,6 +23,11 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateUsuarioDto.prototype, "nome", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], CreateUsuarioDto.prototype, "senha", void 0);
 __decorate([
     (0, class_validator_1.IsEnum)(enums_1.CargoUsuario),
     __metadata("design:type", String)

@@ -6,6 +6,10 @@ export class CreateUsuarioDto {
   @IsNotEmpty()
   nome!: string;
 
+   @IsString()
+  @IsNotEmpty()
+  senha!: string;
+
   @IsEnum(CargoUsuario)
   cargo!: CargoUsuario;
 }

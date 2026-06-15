@@ -21,6 +21,7 @@ enum StatusTarefa {
 model Usuario {
   id        Int       @id @default(autoincrement())
   nome      String
+  senha     String
   cargo     CargoUsuario
   criadoEm  DateTime  @default(now())
 
