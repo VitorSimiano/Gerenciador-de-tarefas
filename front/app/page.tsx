@@ -10,40 +10,40 @@ export default function LoginPage() {
   const [erro, setErro] = useState('');
   const [carregando, setCarregando] = useState(false);
 
-  async function handleLogin() {
-    setErro('');
-    setCarregando(true);
+ async function handleLogin() {
+  setErro('');
+  setCarregando(true);
 
-    try {
-      const res = await fetch('http://localhost:3000/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome, senha }),
-      });
+  try {
+    const res = await fetch('http://localhost:3000/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome, senha }),
+    });
 
-      if (!res.ok) {
-        setErro('Nome ou senha inválidos.');
-        return;
-      }
-
-      const usuario = await res.json();
-
-      localStorage.setItem('usuario', JSON.stringify(usuario));
-
-      if (usuario.cargo === 'CHEFE') {
-        router.push('/dashboard');
-      } else {
-        router.push('/dashboard');
-      }
-    } catch {
-      setErro('Erro ao conectar com o servidor.');
-    } finally {
-      setCarregando(false);
+    if (!res.ok) {
+      setErro('Nome ou senha inválidos.');
+      return;
     }
+
+    const usuario = await res.json();
+
+    // Salva no localStorage
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+
+    // Salva no cookie para o middleware
+    document.cookie = `usuario=${JSON.stringify(usuario)}; path=/`;
+
+    router.push('/dashboard');
+  } catch {
+    setErro('Erro ao conectar com o servidor.');
+  } finally {
+    setCarregando(false);
   }
+}
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-100">
+    <div className="min-h-screen flex items-center justify-center bg-zinc-100 text-black">
       <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-sm">
         <h1 className="text-2xl font-bold text-zinc-800 mb-6 text-center">
           Gerenciador de Tarefas

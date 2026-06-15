@@ -22,8 +22,8 @@ export default function TarefaForm({ onSubmit }: TarefaFormProps) {
       | "PENDENTE"
       | "EM_ANDAMENTO"
       | "FINALIZADA",
-    criadoPor: 1,
-    atribuidoA: 1,
+    criadoPor: 2,
+    atribuidoA: 4,
   });
 
   async function handleSubmit(e: React.FormEvent) {
@@ -36,8 +36,8 @@ export default function TarefaForm({ onSubmit }: TarefaFormProps) {
       descricao: "",
       prazo: "",
       status: "PENDENTE",
-      criadoPor: 1,
-      atribuidoA: 1,
+      criadoPor: 2,
+      atribuidoA: 4,
     });
   }
 

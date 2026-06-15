@@ -1,5 +1,7 @@
 import api from "./api";
 
+const USUARIO_CHEFE_ID = "2";
+
 export const tarefaService = {
   listar: async () => {
     const { data } = await api.get("/tarefas");
@@ -12,7 +14,7 @@ export const tarefaService = {
       payload,
       {
         headers: {
-          "usuario-id": "1",
+          "usuario-id": USUARIO_CHEFE_ID,
         },
       }
     );
@@ -31,7 +33,7 @@ export const tarefaService = {
   remover: async (id: number) => {
     await api.delete(`/tarefas/${id}`, {
       headers: {
-        "usuario-id": "1",
+        "usuario-id": USUARIO_CHEFE_ID,
       },
     });
   },

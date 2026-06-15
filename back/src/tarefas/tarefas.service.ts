@@ -8,10 +8,14 @@ import { StatusTarefa } from '../generated/prisma/enums';
 export class TarefasService {
   constructor(private prisma: PrismaService) {}
 
-  async create(createTarefaDto: CreateTarefaDto) {
-    return await this.prisma.tarefa.create({
-      data: createTarefaDto,
-    });
+ async create(createTarefaDto: CreateTarefaDto) {
+  return await this.prisma.tarefa.create({
+    data: {
+      ...createTarefaDto,
+      prazo: new Date(createTarefaDto.prazo),
+    },
+  });
+
   }
 
   async findAll() {

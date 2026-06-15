@@ -5,6 +5,7 @@ import { useState } from "react";
 interface Props {
   onSubmit: (data: {
     nome: string;
+    senha: string;
     cargo: "CHEFE" | "FUNCIONARIO";
   }) => void;
 }
@@ -13,6 +14,7 @@ export default function UsuarioForm({
   onSubmit,
 }: Props) {
   const [nome, setNome] = useState("");
+  const [senha, setSenha] = useState("");
   const [cargo, setCargo] =
     useState<"CHEFE" | "FUNCIONARIO">(
       "FUNCIONARIO"
@@ -25,6 +27,7 @@ export default function UsuarioForm({
 
     onSubmit({
       nome,
+      senha,
       cargo,
     });
 
@@ -45,6 +48,12 @@ export default function UsuarioForm({
         placeholder="Nome"
         className="w-full rounded border p-2"
       />
+      <input
+  type="password"
+  placeholder="Senha"
+  value={senha}
+  onChange={(e) => setSenha(e.target.value)}
+/>
 
       <select
         value={cargo}

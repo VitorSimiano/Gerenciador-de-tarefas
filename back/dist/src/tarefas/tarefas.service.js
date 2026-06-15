@@ -20,7 +20,10 @@ let TarefasService = class TarefasService {
     }
     async create(createTarefaDto) {
         return await this.prisma.tarefa.create({
-            data: createTarefaDto,
+            data: {
+                ...createTarefaDto,
+                prazo: new Date(createTarefaDto.prazo),
+            },
         });
     }
     async findAll() {
